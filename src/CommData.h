@@ -4,7 +4,8 @@
 #include <cstdint>
 
 enum class CommType : uint8_t {
-	DriveDir
+	DriveDir,
+    Headlights
 };
 
 struct ControlPacket {
@@ -15,6 +16,11 @@ struct ControlPacket {
 struct DriveDir {
 	uint16_t angle; //0-360
 	float value; //0 - 1.0
+};
+
+enum class HeadlightsMode : uint8_t {
+    Off,
+    On
 };
 
 namespace CommData {
