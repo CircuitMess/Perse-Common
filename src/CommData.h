@@ -5,7 +5,7 @@
 
 enum class CommType : uint8_t {
 	DriveDir,
-    Headlights
+	Headlights
 };
 
 struct ControlPacket {
@@ -19,8 +19,8 @@ struct DriveDir {
 };
 
 enum class HeadlightsMode : uint8_t {
-    Off,
-    On
+	Off,
+	On
 };
 
 namespace CommData {
