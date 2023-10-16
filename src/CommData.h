@@ -7,7 +7,8 @@ enum class CommType : uint8_t {
 	DriveDir,
 	Headlights,
 	ArmPosition,
-	ArmPinch
+	ArmPinch,
+	CameraRotation
 };
 
 struct ControlPacket {
@@ -27,6 +28,7 @@ enum class HeadlightsMode : uint8_t {
 
 typedef int8_t ArmPos;
 typedef int8_t ArmPinch;
+typedef uint8_t CameraRotation;
 
 namespace CommData {
 	uint8_t encodeDriveDir(DriveDir dir);
