@@ -23,11 +23,6 @@ enum class HeadlightsMode : uint8_t {
 	On
 };
 
-enum class HeadlightsMode : uint8_t {
-	Off,
-	On
-};
-
 namespace CommData {
 	uint8_t encodeDriveDir(DriveDir dir);
 	DriveDir decodeDriveDir(uint8_t raw);
