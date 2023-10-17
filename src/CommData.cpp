@@ -1,25 +1,21 @@
 #include "CommData.h"
+#include <algorithm>
+#include <cmath>
 
 uint8_t CommData::encodeDriveDir(DriveDir dir){
-	//highest 4-bit value indicating direction angle, 0-15 equates to 0-360
+	//highest 4-bit value indicating direction
 	//Lowest 4 bits indicate speed in that direction
+	dir.dir = std::clamp(dir.dir, (uint8_t)0, (uint8_t)7);
+	dir.speed = std::clamp(dir.speed, 0.0f, 1.0f);
 
-	auto angle = (uint8_t) (dir.angle * 15.0f / 360.0f);
-	auto val = (uint8_t) (dir.value * 15.0f);
+	const auto speed = (uint8_t) std::round(dir.speed * 31.0f);
 
-	uint8_t code = (angle << 4) | val;
-
-	return code;
+	return (speed << 3 | dir.dir);
 }
 
 DriveDir CommData::decodeDriveDir(uint8_t raw){
-	DriveDir dir{};
+	uint8_t speed = raw >> 3;
+	uint8_t dir = raw & 0b111;
 
-	uint8_t angle = (raw & 0xF0) >> 4;
-	uint8_t value = raw & 0x0F;
-
-	dir.angle = angle * 360.0f / 15.0f;
-	dir.value = (float) value / 15.0f;
-
-	return dir;
+	return { dir, (float) speed };
 }

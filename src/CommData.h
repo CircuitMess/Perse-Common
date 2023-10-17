@@ -14,8 +14,8 @@ struct ControlPacket {
 };
 
 struct DriveDir {
-	uint16_t angle; //0-360
-	float value; //0 - 1.0
+	uint8_t dir = 0; //0-7
+	float speed = 0.0f; //0 - 1.0
 };
 
 enum class HeadlightsMode : uint8_t {
@@ -24,10 +24,8 @@ enum class HeadlightsMode : uint8_t {
 };
 
 namespace CommData {
-
-uint8_t encodeDriveDir(DriveDir dir);
-DriveDir decodeDriveDir(uint8_t raw);
-
+	uint8_t encodeDriveDir(DriveDir dir);
+	DriveDir decodeDriveDir(uint8_t raw);
 }
 
 #endif //PERSE_COMMON_COMM_H
