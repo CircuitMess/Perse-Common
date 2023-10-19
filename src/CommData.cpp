@@ -19,3 +19,18 @@ DriveDir CommData::decodeDriveDir(uint8_t raw){
 
 	return { dir, (float) speed };
 }
+
+uint8_t CommData::encodeModulePlug(ModulePlugData plugData){
+	uint8_t data = (plugData.insert << 7) | ((uint8_t) plugData.bus << 6) | (uint8_t) plugData.type;
+
+	return data;
+}
+
+ModulePlugData CommData::decodeModulePlug(uint8_t raw){
+	ModulePlugData data{};
+	data.insert = raw >> 7;
+	data.bus = (ModuleBus) ((raw >> 6) & 0b1);
+	data.type = (ModuleType) (raw & 0b111111);
+
+	return data;
+}

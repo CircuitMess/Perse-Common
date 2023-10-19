@@ -47,6 +47,12 @@ struct ModuleData {
 	};
 };
 
+struct ModulePlugData {
+	ModuleType type;
+	ModuleBus bus;
+	bool insert;
+};
+
 struct ControlPacket {
 	CommType type;
 	uint8_t data;
@@ -65,6 +71,10 @@ enum class HeadlightsMode : uint8_t {
 namespace CommData {
 	uint8_t encodeDriveDir(DriveDir dir);
 	DriveDir decodeDriveDir(uint8_t raw);
+
+	uint8_t encodeModulePlug(ModulePlugData plugData);
+	ModulePlugData decodeModulePlug(uint8_t data);
+
 }
 
 #endif //PERSE_COMMON_COMM_H
