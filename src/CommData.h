@@ -25,12 +25,12 @@ struct ModuleData {
 
 		struct {
 			int16_t temp;
-			int16_t humidity;
+			uint16_t humidity;
 		} tempHum;
 
 		struct {
 			int16_t altitude;
-			uint16_t humidity;
+			uint16_t pressure;
 		} altPress;
 
 		struct {
