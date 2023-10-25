@@ -8,7 +8,8 @@ enum class CommType : uint8_t {
 	Headlights,
 	ArmPosition,
 	ArmPinch,
-	CameraRotation
+	CameraRotation,
+	Battery
 };
 
 struct ControlPacket {
