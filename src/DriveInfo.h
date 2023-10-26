@@ -12,10 +12,8 @@ struct CamFrame {
 };
 
 struct MotorInfo {
-	int8_t frontLeft;
-	int8_t frontRight;
-	int8_t backLeft;
-	int8_t backRight;
+	int8_t left;
+	int8_t right;
 };
 
 struct DriveInfo {
