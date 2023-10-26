@@ -4,7 +4,15 @@
 #include <cstdint>
 
 enum class CommType : uint8_t {
-	DriveDir, Headlights, ModulePlug, ModuleData, ModulesEnable
+	DriveDir,
+	Headlights,
+	ArmPosition,
+	ArmPinch,
+	CameraRotation,
+	Battery,
+	ModulePlug,
+	ModuleData,
+	ModulesEnable
 };
 
 enum class ModuleType : uint8_t {
@@ -68,13 +76,16 @@ enum class HeadlightsMode : uint8_t {
 	On
 };
 
+typedef int8_t ArmPos;
+typedef int8_t ArmPinch;
+typedef uint8_t CameraRotation;
+
 namespace CommData {
 	uint8_t encodeDriveDir(DriveDir dir);
 	DriveDir decodeDriveDir(uint8_t raw);
 
 	uint8_t encodeModulePlug(ModulePlugData plugData);
 	ModulePlugData decodeModulePlug(uint8_t data);
-
 }
 
 #endif //PERSE_COMMON_COMM_H
