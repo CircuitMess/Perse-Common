@@ -9,7 +9,56 @@ enum class CommType : uint8_t {
 	ArmPosition,
 	ArmPinch,
 	CameraRotation,
-	Battery
+	Battery,
+	ModulePlug,
+	ModuleData,
+	ModulesEnable
+};
+
+enum class ModuleType : uint8_t {
+	TempHum, Gyro, AltPress, LED, RGB, PhotoRes, Motion, CO2, Unknown
+};
+enum class ModuleBus : uint8_t {
+	Left = 0, Right = 1
+};
+
+struct ModuleData {
+	ModuleType type;
+	ModuleBus bus;
+	union {
+		struct {
+			int16_t x;
+			int16_t y;
+		} gyro;
+
+		struct {
+			int16_t temp;
+			uint16_t humidity;
+		} tempHum;
+
+		struct {
+			int16_t altitude;
+			uint16_t pressure;
+		} altPress;
+
+		struct {
+			uint8_t isOk; //boolean
+		} gas;
+
+		struct {
+			uint8_t motionDetected; //boolean
+		} motion;
+
+		struct {
+			uint8_t level;
+		} photoRes;
+	};
+};
+
+struct ModulePlugData {
+	ModuleType type;
+	ModuleBus bus;
+	bool insert;
 };
 
 struct ControlPacket {
@@ -34,6 +83,9 @@ typedef uint8_t CameraRotation;
 namespace CommData {
 	uint8_t encodeDriveDir(DriveDir dir);
 	DriveDir decodeDriveDir(uint8_t raw);
+
+	uint8_t encodeModulePlug(ModulePlugData plugData);
+	ModulePlugData decodeModulePlug(uint8_t data);
 }
 
 #endif //PERSE_COMMON_COMM_H
