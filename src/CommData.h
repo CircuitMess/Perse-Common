@@ -10,6 +10,7 @@ enum class CommType : uint8_t {
 	ArmPinch,
 	CameraRotation,
 	Battery,
+	FeedQuality,
 	ModulePlug,
 	ModuleData,
 	ModulesEnable
