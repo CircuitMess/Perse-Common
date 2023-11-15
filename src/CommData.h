@@ -13,7 +13,8 @@ enum class CommType : uint8_t {
 	FeedQuality,
 	ModulePlug,
 	ModuleData,
-	ModulesEnable
+	ModulesEnable,
+	Emergency
 };
 
 enum class ModuleType : uint8_t {
