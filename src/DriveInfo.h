@@ -1,8 +1,8 @@
 #ifndef PERSE_ROVER_DRIVEINFO_H
 #define PERSE_ROVER_DRIVEINFO_H
 
-#include "DriveMode.h"
 #include "RingBuffer.h"
+#include "MarkerInfo.h"
 #include <vector>
 #include <memory>
 
@@ -17,13 +17,12 @@ struct MotorInfo {
 };
 
 struct DriveInfo {
-	DriveMode mode = DriveMode::Idle;
-	MotorInfo motors = { };
-	CamFrame frame = { };
+	CamFrame frame = {};
+	MarkerInfo markerInfo = {};
 
 	virtual ~DriveInfo();
 
-	static constexpr size_t baseSize = sizeof(DriveMode) + sizeof(MotorInfo) + sizeof(CamFrame::size);
+	static constexpr size_t baseSize = sizeof(CamFrame::size) + sizeof(MarkerInfo::action) + sizeof(size_t);
 
 	/**
 	 * Returns size of struct in binary form, including all elements and sub-elements.
@@ -46,7 +45,6 @@ struct DriveInfo {
 	 * @return unique_ptr to a DriveInfo struct
 	 */
 	static std::unique_ptr<DriveInfo> deserialize(RingBuffer& buf, size_t size);
-
 };
 
 #define FEED_ENV_LEN 8
