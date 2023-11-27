@@ -14,7 +14,8 @@ enum class CommType : uint8_t {
 	ModulePlug,
 	ModuleData,
 	ModulesEnable,
-	ScanMarkers
+	ScanMarkers,
+	Emergency
 };
 
 enum class ModuleType : uint8_t {
