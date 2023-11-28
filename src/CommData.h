@@ -4,6 +4,7 @@
 #include <cstdint>
 
 enum class CommType : uint8_t {
+	None,
 	DriveDir,
 	Headlights,
 	ArmPosition,
