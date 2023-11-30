@@ -56,6 +56,10 @@ struct ModuleData {
 		struct {
 			uint8_t level;
 		} photoRes;
+
+		struct {
+			bool on;
+		} ledState;
 	};
 };
 
