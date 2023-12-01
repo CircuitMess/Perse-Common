@@ -4,7 +4,7 @@ uint8_t encodeRoverState(uint8_t value, bool local){
 	uint8_t result = value & 0x7F;
 
 	if(local){
-		result = result |= 0x80;
+		result |= 0x80;
 	}
 
 	return result;
