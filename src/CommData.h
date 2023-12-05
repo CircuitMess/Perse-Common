@@ -16,7 +16,8 @@ enum class CommType : uint8_t {
 	ModuleData,
 	ModulesEnable,
 	ScanMarkers,
-	Emergency
+	Emergency,
+    NoFeed
 };
 
 enum class ModuleType : uint8_t {
