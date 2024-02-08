@@ -1,7 +1,7 @@
 #ifndef PERSE_ROVER_ROVERSTATE_H
 #define PERSE_ROVER_ROVERSTATE_H
 
-#include <stdint.h>
+#include <cstdint>
 
 uint8_t encodeRoverState(uint8_t value, bool local);
 
