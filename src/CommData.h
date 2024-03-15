@@ -19,7 +19,8 @@ enum class CommType : uint8_t {
 	Emergency,
 	NoFeed,
 	Audio,
-	ArmControl
+	ArmControl,
+	ControllerBatteryCritical
 };
 
 enum class ModuleType : uint8_t {
