@@ -20,7 +20,16 @@ enum class CommType : uint8_t {
 	NoFeed,
 	Audio,
 	ArmControl,
-	ControllerBatteryCritical
+	ControllerBatteryCritical,
+	ConnectionStrength
+};
+
+enum class ConnectionStrength : uint8_t {
+	None = 4,
+	VeryLow = 3,
+	Low = 2,
+	Medium = 1,
+	High = 0
 };
 
 enum class ModuleType : uint8_t {
